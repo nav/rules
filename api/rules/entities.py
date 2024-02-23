@@ -28,5 +28,5 @@ class Questionnaire(BaseModel):
 
 class Fact(BaseModel):
     person: Person
-    questionnaire: Questionnaire
+    questionnaire: typing.Optional[Questionnaire] = None
     product: typing.Optional[Product] = None
