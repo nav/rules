@@ -6,8 +6,8 @@ class AuthenticationSimulationMiddleware:
         request.person = {
             "organization": {"name": "Acme"},
             "age": 24,
-            "sex_at_birth": "male",
-            "address_state": "CA",
+            "sex_at_birth": "female",
+            "address_state": "WA",
             "address_country": "US",
         }
         response = self.get_response(request)

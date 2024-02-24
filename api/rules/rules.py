@@ -54,11 +54,12 @@ class RuleValidationMixin:
             )
 
         questionnaire = None
-        if "questionnaire" in attrs:
-            _ques = attrs["questionnaire"]
-            questionnaire = entities.Questionnaire(
-                are_you_pregnant=_ques["are_you_pregnant"]
-            )
+        if "order_item_questions" in attrs:
+            kwargs = {}
+            for question in attrs["order_item_questions"]:
+                kwargs[question["question"].slug] = question["answer"]
+
+            questionnaire = entities.Questionnaire(**kwargs)
 
         return entities.Fact(
             person=person,

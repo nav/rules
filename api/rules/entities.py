@@ -24,6 +24,7 @@ class Product(BaseModel):
 
 class Questionnaire(BaseModel):
     are_you_pregnant: bool
+    serious_condition: bool
 
 
 class Fact(BaseModel):

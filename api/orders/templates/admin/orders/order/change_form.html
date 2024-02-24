@@ -1,0 +1,52 @@
+{% extends "admin/change_form.html" %}
+{% load admin_urls %}
+
+{% block extrastyle %}
+    {{ block.super }}
+
+    <style type="text/css">
+     .table {
+         display: table;
+     }
+
+     .header-row {
+         font-weight: bold;
+     }
+     .header-row,
+     .row {
+         display: table-row;
+     }
+
+     .cell {
+         display: table-cell;
+     }
+
+     .row,
+     .cell {
+         padding: 10px;
+     }
+
+     .header-row .cell {
+         padding-bottom: 2px;
+     }
+    </style>
+{% endblock %}
+
+{% block after_related_objects %}
+
+    <h2>Order Items</h2>
+
+    <div class="table">
+        <div class="header-row">
+            <div class="cell">Product</div>
+            <div class="cell">Price</div>
+        </div>
+        {% for item in original.order_items.all %}
+            <div class="row">
+                <div class="cell"><a href="{% url 'admin:orders_orderitem_change' item.pk %}">{{ item }}</a></div>
+                <div class="cell">{{ item.price }}</div>
+            </div>
+        {% endfor %}
+    </div>
+
+{% endblock %}
