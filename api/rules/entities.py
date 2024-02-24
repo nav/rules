@@ -23,8 +23,8 @@ class Product(BaseModel):
 
 
 class Questionnaire(BaseModel):
-    are_you_pregnant: bool
-    serious_condition: bool
+    are_you_pregnant: typing.Optional[bool] = None
+    serious_condition: typing.Optional[bool] = None
 
 
 class Fact(BaseModel):

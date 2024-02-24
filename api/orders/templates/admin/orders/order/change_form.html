@@ -7,14 +7,24 @@
     <style type="text/css">
      .table {
          display: table;
+         width: 100%;
+         margin-bottom: 30px;
+         font-size: 0.8125rem;
      }
 
      .header-row {
          font-weight: bold;
+         background-color: var(--primary);
+         color: var(--header-color);
      }
+
      .header-row,
      .row {
          display: table-row;
+     }
+
+     .row:nth-child(odd) {
+         background-color: var(--darkened-bg);
      }
 
      .cell {
@@ -27,7 +37,7 @@
      }
 
      .header-row .cell {
-         padding-bottom: 2px;
+         padding: 8px 10px;
      }
     </style>
 {% endblock %}
@@ -38,12 +48,14 @@
 
     <div class="table">
         <div class="header-row">
+            <div class="cell">Item</div>
             <div class="cell">Product</div>
             <div class="cell">Price</div>
         </div>
         {% for item in original.order_items.all %}
             <div class="row">
                 <div class="cell"><a href="{% url 'admin:orders_orderitem_change' item.pk %}">{{ item }}</a></div>
+                <div class="cell">{{ item.product.name }}</div>
                 <div class="cell">{{ item.price }}</div>
             </div>
         {% endfor %}

@@ -34,7 +34,6 @@ def get_conditions(content_object):
                 context=context,
             )
         )
-
     return conditions
 
 

@@ -3,8 +3,8 @@ from django.contrib.contenttypes.fields import GenericForeignKey
 
 
 class Rule(models.Model):
-    expression = models.CharField(max_length=255)
-    reason = models.CharField(max_length=255)
+    expression = models.TextField()
+    reason = models.TextField()
 
     def __str__(self):
         return f"Rule {self.pk} {self.reason}"

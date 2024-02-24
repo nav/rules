@@ -3,7 +3,18 @@ from api.orders.models import Order, OrderItem, OrderItemQuestionnaire
 from api.rules.rules import RuleValidationMixin
 
 
+class MultiTypeField(serializers.CharField):
+    def to_internal_value(self, data):
+        if data == "false":
+            return False
+        elif data == "true":
+            return True
+        return super().to_internal_value(data)
+
+
 class OrderItemQuestionnaireSerializer(serializers.ModelSerializer):
+    answer = MultiTypeField()
+
     class Meta:
         model = OrderItemQuestionnaire
         fields = ("question", "answer")
